@@ -14,7 +14,7 @@
 \usepackage{xcolor}
 \usepackage{hyperref}%hyperlink reference
 \usepackage{microtype}
-\usepackage{tabularx}%for expandable colums
+\usepackage{tabularx}%for expandable columns
 \usepackage{enumitem}
 
 
@@ -33,14 +33,22 @@
 {
 Naperville, IL \\
 630-465-8997 \\
-\href{mailto:milesshamo@gmail.com}{milesshamo@gmail.com}
-}
+\href{mailto:milesshamo@gmail.com}{milesshamo@gmail.com}}
 
 
 \begin{document}
-\section*{Education}
 
-%testing column enviornment for later
+\section*{Education}
+\begin{description}[nosep, style=nextline]
+	\item [University of Illinois at Chicago, Chicago, Il] Bachelor of Science in Computer Science 
+	\item Junior standing
+	\item S-STEM Scholar
+	\item Student of the Honors College
+	\item Member of Tau Beta Phi
+	\item Member of the A.C.M.
+\end{description}
+
+%testing column environment for later
 \begin{center}
 \begin{tabularx}{\textwidth}{l X r}
 test & 
