@@ -1,25 +1,44 @@
-%resume.tex
+%=======================================
+% resume.tex - a transition to typsetting in LaTeX
+%
+% Written by Miles Shamo
+%	
+%	My main goal in transitioning to LaTeX (LuaLaTeX techincally)
+%	is to have better control over element layout, as I'm through
+%	with dealing with MS Word textboxes.
 
+%------------------------------------------------------------------------------PACKAGES/SETUP
 %page geometry setup
 \documentclass[11pt, letterpaper]{article}
-\usepackage[letterpaper, includeheadfoot, top=0.5in, bottom=0.5in, left=0.8in, right=0.8in, headheight=50pt]{geometry}
+\usepackage[letterpaper, includeheadfoot, top=0.4in, bottom=0.5in, left=0.8in, right=0.8in, headheight=50pt, headsep=8pt]{geometry}
 
 %font setup
 \usepackage{fontspec}
 \setmainfont[Ligatures=TeX]{Garamond}
 
-
 %various other imports
-\usepackage{fancyhdr}
-\usepackage{xcolor}
+\usepackage{fancyhdr}%headers
+\usepackage{xcolor}%color
 \usepackage{hyperref}%hyperlink reference
-\usepackage{microtype}
+\usepackage{microtype}%font resizing
 \usepackage{tabularx}%for expandable columns
-\usepackage{enumitem}
+\usepackage{enumitem}%better lists
+\usepackage{multicol}%multiple columns
 
 
-%hyperlink setup
+%hyperlink setup to better match standard
 \hypersetup{final=true, colorlinks, urlcolor=blue}
+
+%sets up rows for tabular eviornment
+\setlength{\extrarowheight}{0pt}
+\newcolumntype{E}{>{\raggedleft\arraybackslash}X}%Education columns
+\newcolumntype{Y}{>{\hsize=.11\hsize}X}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}%centers all columns
+\renewcommand*{\arraystretch}{0}
+
+%sets up descriptions
+\setlist[description]{topsep=0pt, itemsep=2pt, parsep=0pt, style=nextline}
 
 %Header setup
 \pagestyle{fancy}
@@ -35,23 +54,86 @@ Naperville, IL \\
 630-465-8997 \\
 \href{mailto:milesshamo@gmail.com}{milesshamo@gmail.com}}
 
-
+%---------------------------------------------------------------------------DOCUMENT
 \begin{document}
-
+%---------------------------------------------------------------------------EDUCATION
+%Formatted:
+%	[School], city			elem3			start year
+%		elem1			elem4			      --
+%		elem2			elem5			end year
 \section*{Education}
-\begin{description}[nosep, style=nextline]
-	\item [University of Illinois at Chicago, Chicago, Il] Bachelor of Science in Computer Science 
-	\item Junior standing
-	\item S-STEM Scholar
-	\item Student of the Honors College
-	\item Member of Tau Beta Phi
-	\item Member of the A.C.M.
-\end{description}
+\vspace{-18pt} %vspace is not ideal, but a package just to fix this one issue is a bit silly
 
-%testing column environment for later
-\begin{center}
-\begin{tabularx}{\textwidth}{l X r}
-test & 
-\end{tabularx}
-\end{center}
+\begin{flushleft} %throws everything to the left to ensure table works properly
+	\begin{tabularx}{\textwidth}[c]{E Y} %sets up table with 2 columns (ed and year)
+		
+		%UNIVERSITY OF ILLINOIS AT CHICAGO
+		\begin{multicols}{2}
+			\begin{description}
+				\item [University of Illinois at Chicago, Chicago, Il] Bachelor of Science in Computer Science 
+				\item Junior standing
+				\item S-STEM Scholar
+				\item 4.0 Grade Point Average
+				\item Honors College Student
+				\item Member of Tau Beta Phi
+				\item Member of the A.C.M.
+			\end{description}
+		\end{multicols}
+		%year
+		& {\centering{Aug. 2019 \\ -- \\ May 2023 \\ (expected)}} \\
+		
+		%NORTH CENTRAL COLLEGE
+		\begin{multicols}{2}
+			\begin{description}
+				\item [North Central College, Naperville, Il] Continued studies in Computer Science alongside high-school course-load
+				\item 4.0 Grade Point Average
+				\item Lederman Scholar
+			\end{description}
+		\end{multicols}
+		& {\centering{May 2016 \\ -- \\ May 2018}}  \\
+		
+		%NAPERVILLE CENTRAL HS
+		\begin{multicols}{2}
+			\begin{description}
+				\item [Naperville Central High School, Il] National Honors Society member
+				\item 4.452 Grade Point Average
+				\item Science Olympiad Captain
+			\end{description}
+		\end{multicols}
+		& {\centering{Aug. 2015 \\ -- \\ May 2019}}  \\
+	\end{tabularx}
+\end{flushleft}
+
+%---------------------------------------------------------------------------Skills
+%For skills, we can use a much simpler format
+\section*{Skills}
+\vspace{-4pt}
+
+\begin{flushleft}
+	\begin{tabularx}{\textwidth}{X X}
+		%other skills
+		\begin{description}
+			\item Computer maintenance and repair
+		\end{description} &
+		
+		%Programming languages
+		\begin{description}
+			\item [Programming Languages] 2 years Java experience
+			\item Proficient in and studying C and C++
+			\item Familiar with  Python, \LaTeX{}, JavaScript, and C\#
+			\item Currently learning AHK and Rockstar
+		\end{description} 
+	\end{tabularx}
+\end{flushleft}
+
+\section*{Experience}
+\vspace{-18pt}
+
+\section*{Volunteer Experience}
+\vspace{-18pt}
+
+\section*{Activities}
+\vspace{-18pt}
+
+
 \end{document}
