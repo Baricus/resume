@@ -8,10 +8,19 @@
 %	with dealing with MS Word textboxes.  At the same time,
 %	I decided to upload this to github, to have better version control
 %	for individual opportunities
+%	
+%	To Do:
+%		- Revise projects section; it is currently unbalanced
+%			Perhaps single column formatting or some hybrid?
+%		- Ensure vertical formatting is correct
+%			(long term goal: eliminate vspace)
+%		- Lowecase GPA
+%		- Expand additional activities section
+%		- Make first branch for fair
 
 %------------------------------------------------------------------------------PACKAGES/SETUP
 %page geometry setup
-\documentclass[10pt, letterpaper]{article}
+\documentclass[10.5pt, letterpaper]{article}
 \usepackage[letterpaper, includeheadfoot, top=0.4in, bottom=0.5in, left=0.8in, right=0.8in, headheight=50pt, headsep=8pt]{geometry}
 
 %font setup
@@ -48,7 +57,7 @@
 \lhead
 {
 {\Huge \bf Miles Shamo} \\
- \emph{Expected Bachelors of Science in Computer Science in 2023}
+{\large \emph{Expected Bachelors of Science in Computer Science in 2023}}
 }
 \rhead %I should add some vector logos here for email, etc
 {
@@ -221,7 +230,7 @@ Naperville, IL \\
 		\begin{description}
 			\item Regular volunteer for AquaHouse Tutoring.  
 			\item Regular volunteer for children's activities at the Naperville Public Library
-			\item Amateur pianist, thereminist
+			\item Amateur performance pianist
 			\item Amateur poet looking to publish in the near future
 		\end{description}	
 	\end{multicols}
