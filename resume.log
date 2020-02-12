@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.11.2 (MiKTeX 2.9.7250 64-bit)  (format=lualatex 2020.1.28)  10 FEB 2020 21:40
+This is LuaTeX, Version 1.11.2 (MiKTeX 2.9.7250 64-bit)  (format=lualatex 2020.1.28)  11 FEB 2020 22:04
  restricted system commands enabled.
 **resume.tex
 (./resume.tex
@@ -59,7 +59,7 @@ Lua module: luaotfload-tounicode 2019-11-10 3.11 luaotfload submodule / tounicod
 e
 Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 2.355 seconds
+luaotfload | main : initialization completed in 1.967 seconds
 ("C:/Program Files/MiKTeX 2.9/tex/latex/base/article.cls"
 Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
 ("C:/Program Files/MiKTeX 2.9/tex/latex/base/size10.clo"
@@ -805,13 +805,13 @@ Here is how much of LuaTeX's memory you used:
  458 words of node memory still in use:
    4 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 6 attribute, 55 glue_spec,
  6 attribute_list, 1 write nodes
-   avail lists: 2:1078,3:590,4:236,5:77,6:155,7:6364,8:14,9:522,10:9,11:410
+   avail lists: 2:1078,3:590,4:236,5:77,6:155,7:6366,8:14,9:522,10:9,11:410
  29783 multiletter control sequences out of 65536+200000
  53 fonts using 8142335 bytes
  52i,11n,71p,357b,2144s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/WINDOWS/Fonts/gara.ttf><C:/WINDOWS/Fonts/garait.ttf><C:/WINDOWS/Fonts/garabd
 .ttf>
-Output written on resume.pdf (1 page, 81407 bytes).
+Output written on resume.pdf (1 page, 81409 bytes).
 
 PDF statistics: 42 PDF objects out of 1000 (max. 8388607)
  7 named destinations out of 1000 (max. 131072)
