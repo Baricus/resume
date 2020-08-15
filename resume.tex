@@ -16,7 +16,6 @@
 %		-Add vector work:
 %			-location, email, phone number
 %			-bullets for education, skills, etc?
-%		-consider changing LaTeX to standard font (it's a little out of place?)
 
 
 %------------------------------------------------------------------------------PACKAGES/SETUP
@@ -104,7 +103,7 @@ Naperville, IL \\
 		\begin{multicols}{2}
 			\begin{description}
 				\item [North Central College, Naperville, Il.] 
-					Studied Computer Science alongside high school course-load
+					Studied Computer Science alongside high school
 				\item 4.0 grade point average
 				\item Lederman Scholar
 			\end{description}
@@ -133,7 +132,7 @@ Naperville, IL \\
 
 %---------------------------------------------------------------------------Skills
 %For skills, we can use a much simpler format
-\vspace{-24pt}
+\vspace{-30pt}
 \section*{Skills}
 \vspace{-8pt}
 
@@ -142,38 +141,51 @@ Naperville, IL \\
 		%other skills
 		\begin{description}
 			\item Computer maintenance and repair	
-			\item Wireless network analysis
+			\item Wireless networking analysis
+			\item CAD software
 			\item Proficient in regular expressions
-			\item Proficient with Catch2
 			\item Proficient with VIM, GNUMake, Valgrind, and GDB
 		\end{description} &
 		
 		%Programming languages
 		\begin{description}
 			\item [Programming Languages] 
-				2.5 years Java experience
-			\item Proficient in and currently studying C and C++
-			\item Familiar with Python, \href{https://github.com/baricus/resume}{\LaTeX{}}, JavaScript, and C\#
-			\item Currently learning AHK and Rockstar
+				 Currently studying C \& C++ 
+			\item Experienced in Java
+			\item Proficient in Python \& \href{https://github.com/baricus/resume}{\LaTeX{}}
+			\item Familiar with JavaScript \& C\#
+			\item Exploring AHK and Rockstar
 		\end{description} 
 	\end{tabularx}
 \end{flushleft}
 
 %---------------------------------------------------------------------------Experience (work)
 %For this section, we return to the formatting of Education
-\vspace{-24pt}
+\vspace{-30pt}
 \section*{Experience}
 \vspace{-8pt}
 
 \begin{flushleft}
 	\begin{tabularx}{\textwidth}[c]{E Y}
+	
+		%MAKERSPACE, UIC
+		\begin{description}
+			\item [G.P.I.P. Intern, University of Illinois at Chicago MakerSpace]
+				Planned, designed, and constructed a physical project using MakerSpace facilities
+			\item Designed sneeze guards for use in UIC offices
+			\item Experimented with various additive and subtractive manufacturing techniques
+		\end{description}
+		&
+		\begin{center}
+			July 2020 \\ to \\ Aug. 2020
+		\end{center}
+		\\
 		
 		%NETWORK OPS, NCUSD
 		\begin{description}
 			\item [Network Operations Intern, Naperville Community Unit School District 203] 
 				Led a small team to conduct a suite of wireless surveys across the district
-			\item Condensed findings into building level reports highlighting problems and provided solutions
-			\item Presented findings to district leadership
+			\item Condensed findings into building level reports highlighting problems and providing solutions
 			\item Developed a Java application to analyze active survey data
 			\item Worked closely with both hardware and software infrastructure
 		\end{description} 
@@ -187,9 +199,7 @@ Naperville, IL \\
 		\begin{description}
 			\item [Golf Caddie, Naperville Country Club] 
 				Carries patrons clubs for duration of the golf round
-			\item Ensures clubs are clean and properly stored at conclusion of round
 			\item Rakes bunkers, fills divots and other basic maintenance
-			\item Promotes fast and enjoyable play
 		\end{description} 
 		&
 		\begin{center}
@@ -201,7 +211,7 @@ Naperville, IL \\
 %---------------------------------------------------------------------------Projects
 %Similar to ``Skills,'' we put this section in two columns: prior and current projects
 
-\vspace{-24pt}
+\vspace{-30pt}
 \section*{Projects}
 \vspace{-8pt}
 
@@ -214,7 +224,7 @@ Naperville, IL \\
 				Explored the arithmetic of elliptical curves through python-enabled computation
 			\item Analyzed high sample rate (\~{}1000 Hz.) waveform data using the OpenCSV Java library
 			\item Implemented a Spotify ``helper.'' Managed volume, seek/skip, and liking/disliking songs through keyboard shortcuts via AutoHotKey
-			\item Prototyped ``Left Click to Everything,'' a game written for the Unity Engine in C\#
+			\item Prototyped ``Left Click to Everything,'' in Unity
 		\end{description}
 		&
 		
