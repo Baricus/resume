@@ -10,31 +10,31 @@
 %	for individual opportunities
 %	
 %	To Do:
-%		- Ensure vertical formatting is correct
-%			(long term goal: eliminate vspace) <- probably requires packages
-%		- Consider revising vertical separation of Education (could be helpful?)
-%		-Add vector work:
+%		- Add vector work:
 %			-location, email, phone number
 %			-bullets for education, skills, etc?
+%		- Convert to environments
 
 
 %------------------------------------------------------------------------------PACKAGES/SETUP
 %page geometry setup
 \documentclass[10.5pt, letterpaper]{article}
-\usepackage[letterpaper, includeheadfoot, top=0.25in, bottom=0.25in, left=0.8in, right=0.8in, headheight=40pt, headsep=8pt]{geometry}
+\usepackage[letterpaper, includeheadfoot, top=0.25in, bottom=0.25in, left=0.5in, right=0.5in, headheight=40pt, headsep=8pt]{geometry}
 
 %font setup
 \usepackage{fontspec}
 \setmainfont[Ligatures=TeX]{Garamond}
 
 %various other imports
-\usepackage{fancyhdr}%headers
+\usepackage{fancyhdr}%headerst
+
 \usepackage{xcolor}%color
 \usepackage{hyperref}%hyperlink reference
 \usepackage{microtype}%font resizing
 \usepackage{tabularx}%for expandable columns
 \usepackage{enumitem}%better lists
 \usepackage{multicol}%multiple columns
+\usepackage[compact]{titlesec} % allows setting title spacing
 
 %hyperlink setup to better match standard
 \hypersetup{final=true, colorlinks, urlcolor=blue}
@@ -44,11 +44,24 @@
 \newcolumntype{E}{>{\raggedleft\arraybackslash}X}%Education columns (left side alignment)
 \newcolumntype{Y}{>{\hsize=.11\hsize}X}%Year columns (fixed size, center aligned)
 
-\renewcommand\tabularxcolumn[1]{m{#1}}%centers all columns
+%tabularX
+\renewcommand\tabularxcolumn[1]{p{#1}}
 \renewcommand*{\arraystretch}{0}
 
 %sets up descriptions
 \setlist[description]{topsep=0pt, itemsep=1pt, parsep=0pt, style=nextline}
+
+% vertical spacing setups
+% lowes spacing of section headers
+\titlespacing{\section}{0pt}{-10pt plus 0pt minus 2pt}{0pt plus 0pt minus 0pt}
+% reduces multicol spacing
+\setlength{\multicolsep}{0pt plus 0pt minus 0pt}
+% reduces tabularx prespacing
+\setlength{\textfloatsep}{0pt}
+% removes space before front of lists
+\setlength\topsep{0pt}
+% lowers seperation between list items
+\setlength\itemsep{3pt}
 
 %Header setup
 \pagestyle{fancy}
@@ -64,7 +77,6 @@ Naperville, IL \\
 630-465-8997 \\
 \href{mailto:milesshamo@gmail.com}{milesshamo@gmail.com}}
 
-
 %---------------------------------------------------------------------------DOCUMENT
 \begin{document}
 %---------------------------------------------------------------------------EDUCATION
@@ -73,7 +85,6 @@ Naperville, IL \\
 %		elem1			elem4			      --
 %		elem2			elem5			end year
 \section*{Education}
-\vspace{-18pt} %vspace is not ideal, but a package just to fix this one issue is a bit silly
 
 \begin{flushleft} %throws everything to the left to ensure table works properly
 	\begin{tabularx}{\textwidth}[c]{E Y} %sets up table with 2 columns (ed and year)
@@ -84,7 +95,7 @@ Naperville, IL \\
 				\item [University of Illinois at Chicago, Chicago, Il.] 
 					Bachelor of Science in Computer Science 
 				\item Junior standing
-				\item S-STEM Scholar
+				\item NSF S-STEM Scholar
 				\item 4.0 grade point average
 				\item Honors College Student
 				\item Member of Tau Beta Phi
@@ -131,9 +142,7 @@ Naperville, IL \\
 
 %---------------------------------------------------------------------------Skills
 %For skills, we can use a much simpler format
-\vspace{-30pt}
 \section*{Skills}
-\vspace{-8pt}
 
 \begin{flushleft}
 	\begin{tabularx}{\textwidth}{X X}
@@ -160,9 +169,7 @@ Naperville, IL \\
 
 %---------------------------------------------------------------------------Experience (work)
 %For this section, we return to the formatting of Education
-\vspace{-30pt}
 \section*{Experience}
-\vspace{-8pt}
 
 \begin{flushleft}
 	\begin{tabularx}{\textwidth}[c]{E Y}
@@ -170,8 +177,9 @@ Naperville, IL \\
 		%251 TA, UIC
 		\begin{description}
 			\item [CS 251 (Data Structures) Teaching Assistant, University of Illinois at Chicago]
-				Engaged with students via self-run office hours targeting projects and course material
-			\item Provided iterative feedback on project design and requirements
+				Engages with students during self-run office hours 
+			\item Aids in running lab sections and proctoring oral examinations
+			\item Provides iterative feedback on project design and requirements
 				
 		\end{description}
 		&
@@ -222,24 +230,10 @@ Naperville, IL \\
 
 %---------------------------------------------------------------------------Projects
 %Similar to ``Skills,'' we put this section in two columns: prior and current projects
-
-\vspace{-30pt}
 \section*{Projects}
-\vspace{-8pt}
 
 \begin{center}
-	\begin{tabularx}{\textwidth}[t]{X X}
-		
-		%Prior projects
-		\begin{description}
-			\item [Prior Projects] 
-				Explored the arithmetic of elliptical curves through python-enabled computation
-			\item Analyzed high sample rate (\~{}1000 Hz.) waveform data using the OpenCSV Java library
-			\item Implemented a Spotify ``helper.'' Managed volume, seek/skip, and liking/disliking songs through keyboard shortcuts via AutoHotKey
-			\item Prototyped ``Left Click to Everything,'' in Unity
-		\end{description}
-		&
-		
+	\begin{tabularx}{\textwidth}{X X}
 		%Current projects
 		\begin{description}
 			\item [Current Projects] 
@@ -247,14 +241,22 @@ Naperville, IL \\
 			\item Assembling and experimenting with the Open Theremin V3 Arduino Shield
 			\item Creating generative art through Java applications via the Processing3 library
 		\end{description}
+		
+		&
+		%Prior projects
+		\begin{description}
+			\item [Prior Projects] 
+				Explored the arithmetic of elliptical curves through python-enabled computation
+			\item Analyzed high sample rate (\~{}1000 Hz.) waveform data using the OpenCSV Java library
+			\item Implemented a Spotify ``helper.'' Managed volume, seek/skip, and liking/disliking songs through keyboard shortcuts via AutoHotKey
+			\item Prototyped ``Left Click to Everything,'' in Unity
+		\end{description}	
 	\end{tabularx}
 \end{center}
 
 %---------------------------------------------------------------------------Additional Activities
 %For additional activities, each gets one ``bullet point''
-\vspace{-24pt}
 \section*{Additional Activities}
-\vspace{-18pt}
 
 \begin{center}
 	\begin{multicols}{2}
