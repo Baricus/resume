@@ -19,7 +19,7 @@
 %------------------------------------------------------------------------------PACKAGES/SETUP
 %page geometry setup
 \documentclass[10.5pt, letterpaper]{article}
-\usepackage[letterpaper, includeheadfoot, top=0.25in, bottom=0.25in, left=0.5in, right=0.5in, headheight=40pt, headsep=8pt]{geometry}
+\usepackage[letterpaper, includeheadfoot, top=0.25in, bottom=0.25in, left=0.5in, right=0.5in, headheight=50pt, headsep=8pt]{geometry}
 
 %font setup
 \usepackage{fontspec}
@@ -49,7 +49,7 @@
 \renewcommand*{\arraystretch}{0}
 
 %sets up descriptions
-\setlist[description]{topsep=0pt, itemsep=1pt, parsep=0pt, style=nextline}
+\setlist[description]{topsep=0pt, itemsep=2pt, parsep=0pt, style=nextline}
 
 % vertical spacing setups
 % lowes spacing of section headers (left spacing, above, below)
@@ -79,7 +79,7 @@ Naperville, IL \\
 
 %---------------------------------------------------------------------------DOCUMENT
 \begin{document}
-%---------------------------------------------------------------------------EDUCATION
+%---------------------------------------------------------------------------Education
 %Formatted:
 %	[School], city			elem3			start year
 %		elem1			elem4			      --
@@ -108,9 +108,25 @@ Naperville, IL \\
 			Aug. 2019 \\ to \\ May 2023 \\ (Predicted)
 		\end{center}
 		\\
-		
-		%NORTH CENTRAL COLLEGE
-		
+	\end{tabularx}
+\end{flushleft}
+
+%---------------------------------------------------------------------------Coursework
+\section*{Relevant Coursework}
+\begin{flushleft}
+	\begin{tabularx}{\textwidth}[c]{X X}
+		\begin{description}
+			\item Data Structures (CS 251)
+			\item Machine Organization (CS 261)
+			\item Languages and Automata (CS 301)
+			\item Software Design (CS 342)
+			\item Computer Algorithms (CS 401)
+		\end{description} &
+		\begin{description}
+			\item Applied Statistics (STAT 381)
+			\item Differential Equations (MATH 220)
+			\item Linear Algebra (MATH 320)
+		\end{description}
 	\end{tabularx}
 \end{flushleft}
 
