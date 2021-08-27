@@ -11,7 +11,7 @@
 %	
 %	To Do:
 %		- Add vector work:
-%			-location, email, phone number
+
 %			-bullets for education, skills, etc?
 %		- Convert to environments
 
@@ -35,6 +35,7 @@
 \usepackage{enumitem}%better lists
 \usepackage{multicol}%multiple columns
 \usepackage[compact]{titlesec} % allows setting title spacing
+
 
 %hyperlink setup to better match standard
 \hypersetup{final=true, colorlinks, urlcolor=blue}
@@ -68,13 +69,13 @@
 \fancyhf{}
 \lhead
 {
-{\Huge \bf Miles Shamo} \\
-{\Large \emph{Expected Bachelors of Science in Computer Science in 2023}}
+	{\Huge \bf Miles Shamo} \\
+	{\Large \emph{Expected Bachelors of Science in Computer Science in 2023}}
 }
 \rhead 
 {
-Naperville, IL \\
-630-465-8997 \\
+	Naperville, IL \\
+	630-465-8997 \\
 \href{mailto:milesshamo@gmail.com}{milesshamo@gmail.com}}
 
 %---------------------------------------------------------------------------DOCUMENT
@@ -88,17 +89,15 @@ Naperville, IL \\
 
 \begin{flushleft} %throws everything to the left to ensure table works properly
 	\begin{tabularx}{\textwidth}[c]{E Y} %sets up table with 2 columns (ed and year)
-		
+
 		%UNIVERSITY OF ILLINOIS AT CHICAGO
 		\begin{multicols}{2}
 			\begin{description}
 				\item [University of Illinois at Chicago, Chicago, Il.] 
 					Bachelor of Science in Computer Science 
-				\item Junior standing
-				\item NSF S-STEM Scholar
+				\item Senior standing
 				\item 4.0 grade point average
 				\item Honors College Student
-				\item Member of Tau Beta Phi
 				\item Member of the A.C.M.
 			\end{description}
 		\end{multicols}
@@ -144,11 +143,11 @@ Naperville, IL \\
 			\item Proficient in regular expressions
 			\item Proficient with VIM, GNUMake, Valgrind, and GDB
 		\end{description} &
-		
+
 		%Programming languages
 		\begin{description}
 			\item [Programming Languages] 
-				 Currently studying C \& C++ and Java
+				Currently studying C \& C++ and Java
 			\item Proficient in Python \& \href{https://github.com/baricus/resume}{\LaTeX{}}
 			\item Familiar with JavaScript \& C\#
 			\item Exploring AHK and Rockstar
@@ -162,48 +161,61 @@ Naperville, IL \\
 
 \begin{flushleft}
 	\begin{tabularx}{\textwidth}[c]{E Y}
-		
+
+		% Telephony Studies CACI
+		\begin{description}
+			\item [Telephone Studies Intern, CACI]
+				What am I allowed to put here?
+			\item better double check
+			\item just to be sure; for now this is here for formatting
+		\end{description}
+		&
+		\begin{center}
+			May. 2021 \\ to \\ Aug. 2021 
+		\end{center}
+		\\
+
 		%251 TA, UIC
 		\begin{description}
 			\item [CS 251 (Data Structures) Teaching Assistant, University of Illinois at Chicago]
 				Engages with students during self-run office hours 
 			\item Aids in running lab sections and proctoring oral examinations
 			\item Provides iterative feedback on project design and requirements
-				
+
 		\end{description}
 		&
 		\begin{center}
-			Aug. 2020 \\ to \\  Present
+			Aug. 2020 \\ to \\ May 2021 
 		\end{center}
 		\\
-	
+
 		%MAKERSPACE, UIC
 		\begin{description}
 			\item [Intern, University of Illinois at Chicago MakerSpace]
 				Independently designed and manufactured a self chosen project using MakerSpace facilities
 			\item Designed and manufactured sneeze guards for use in UIC offices
-			% \item Experimented with various additive and subtractive manufacturing techniques
+				% \item Experimented with various additive and subtractive manufacturing techniques
 		\end{description}
 		&
 		\begin{center}
 			July 2020 \\ to \\ Aug. 2020
 		\end{center}
 		\\
-		
+
 		%NETWORK OPS, NCUSD
 		\begin{description}
 			\item [Network Operations Intern, Naperville Community Unit School District 203] 
 				Led a small team to conduct a suite of wireless surveys across the district
 			\item Condensed findings into building level reports highlighting problems and providing solutions
 			\item Developed a Java application to analyze active survey data
-			% \item Worked closely with both hardware and software infrastructure
+				% \item Worked closely with both hardware and software infrastructure
 		\end{description} 
 		& 
 		\begin{center}
 			June 2019 \\ to \\ Aug. 2019
 		\end{center}
 		\\
-		
+
 		%GOLF CADDIE NCC
 		\begin{description}
 			\item [Golf Caddie, Naperville Country Club] 
@@ -230,7 +242,7 @@ Naperville, IL \\
 			\item Assembling and experimenting with the Open Theremin V3 Arduino Shield
 			\item Creating generative art through Java applications via the Processing3 library
 		\end{description}
-		
+
 		&
 		%Prior projects
 		\begin{description}
