@@ -12,15 +12,18 @@
 %	To Do:
 %		- Redo Relevant coursework
 %		- Add vector work:
-
 %			-bullets for education, skills, etc?
 %		- Convert to environments
+%
+%	Considerations:
+%		- Should relevant coursework be revamped to entirely technical electives?
+%		- Github Actions based releases rather than included PDF?
 
 
 %------------------------------------------------------------------------------PACKAGES/SETUP
 %page geometry setup
 \documentclass[10.5pt, letterpaper]{article}
-\usepackage[letterpaper, includeheadfoot, top=0.1in, bottom=0.15in, left=0.5in, right=0.5in, headheight=50pt, headsep=8pt]{geometry}
+\usepackage[letterpaper, includeheadfoot, top=0.25in, bottom=0.25in, left=0.5in, right=0.5in, headheight=50pt, headsep=8pt]{geometry}
 
 %font setup
 \usepackage{fontspec}
@@ -120,7 +123,7 @@
 			\item Computer Algorithms (CS 401)
 		\end{description} &
 		\begin{description}
-			\item Applied Statistics (STAT 381)
+			\item Formal Logic (MATH 430)
 			\item Differential Equations (MATH 220)
 			\item Linear Algebra (MATH 320)
 		\end{description}
@@ -246,17 +249,21 @@
 		%Current projects
 		\begin{description}
 			\item [Current Projects] 
-				Writing a fully automated Twitch-specific IRC bot, \href{https://github.com/Baricus/BariBot}{BariBot}, in C++ from the socket level
-			\item Assembling and experimenting with the Open Theremin V3 Arduino Shield
-			\item Creating generative art through Java applications via the Processing3 library
+				Developing \href{https://github.com/Baricus/HaskTTP}{HaskTTP}, a conditionally compliant HTTP/1.1 webserver written in Haskell from the socket level
+			\item Using Iris as a component of a VST specification for verifying C programs in Coq
 		\end{description}
 
 		&
 		%Prior projects
 		\begin{description}
 			\item [Prior Projects] 
-				Explored the arithmetic of elliptical curves through python-enabled computation, personally focused on creating classes representing points and the related abelian operations over various fields
-			\item Implemented a Spotify ``helper,'' managing volume, seek/skip, and liking/disliking songs through keyboard shortcuts via AutoHotKey
+				Writing a fully automated Twitch-specific IRC bot, \href{https://github.com/Baricus/BariBot}{BariBot}, in C++ from the socket level
+			\item Explored elliptic curve arithmetic in Python over various fields
+			\item Creating generative art through Java applications via the Processing3 library
+
+			%\item Explored the arithmetic of elliptical curves through python-enabled computation, personally focused on creating classes representing points and the related abelian operations over various fields
+			%\item Assembling and experimenting with the Open Theremin V3 Arduino Shield
+			%\item Implemented a Spotify ``helper,'' managing volume, seek/skip, and liking/disliking songs through keyboard shortcuts via AutoHotKey
 		\end{description}	
 	\end{tabularx}
 \end{center}
