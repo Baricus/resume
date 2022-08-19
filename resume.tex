@@ -46,10 +46,10 @@
 
 %sets up rows for tabular eviornment
 \setlength{\extrarowheight}{0pt}
-\newcolumntype{E}{>{\raggedleft\arraybackslash}X}%Education columns (left side alignment)
-\newcolumntype{Y}{>{\hsize=.11\hsize}X}%Year columns (fixed size, center aligned)
+\newcolumntype{E}{>{\raggedleft\arraybackslash}X} % Education columns (left side alignment)
+\newcolumntype{Y}{>{\hsize=.11\hsize}X}           % Year columns (fixed size, center aligned)
 
-%tabularX
+% tabularX removing spacing
 \renewcommand\tabularxcolumn[1]{p{#1}}
 \renewcommand*{\arraystretch}{0}
 
@@ -236,8 +236,9 @@
 		\end{description} 
 		&
 		\begin{center}
-			Apr. 2018 \\ to \\ Present
-		\end{center} \\
+			Apr. 2018 \\ to \\ Aug. 2020
+		\end{center} 
+		\\
 	\end{tabularx}
 \end{flushleft}
 
