@@ -67,23 +67,102 @@
 % lowers seperation between list items
 \setlength\itemsep{3pt}
 
-% Custom enviornments
-\newenvironment{DatedEntry}[2]{%
-	\newcommand{\DateLine}{#1 \\ to \\ #2}%
-	\flushleft
-	\tabularx{\textwidth}[c]{E Y}%
-}{%
-	&%
-	\begin{center}%
-		\DateLine%
-	\end{center}%
-	\\%
-	\endtabularx%
-	}
+% Custom environments
+%\newenvironment{DatedEntry}[2]{%
+	%\newcommand{\DateLine}{#1 \\ to \\ #2}%
+	%\flushleft%
+	%\tabularx{\textwidth}[c]{E Y}%
+%}{%
+	%&% swaps to the date column
+	%{\center\DateLine}%
+	%\\%
+	%\endtabularx%
+	%\endflushleft
+%}
 
-%\newenvironment{DatedEntry}[2]%
-	%{\begin{flushleft}\begin{tabularx}{\textwidth}[c]{E Y}}%
-	%{exit\end{tabularx}\end{flushleft}}
+% simple environments for the start/end of various sections
+\newenvironment{Education} %
+{                          %
+	\section*{Education}   %
+	\flushleft             % ensures tables work by forcing alignment
+}{                         %
+	\endflushleft          %
+}
+
+\newenvironment{Experience} %
+{                           %
+	\section*{Experience}   %
+	\flushleft              %
+}{                          %
+	\endflushleft           %
+}
+
+% TitleDescription - a "single title" description
+% Takes in a title to wrap in square quotes on the first call to \item,
+% rebinding \item to work transparently with this as if there was genuinely a title
+%
+% Arguments: {Description Title}
+\newenvironment{TitleDescription}[1]                    %
+{                                                       %
+	\begin{description}                                 %
+		\item [#1]                                      %
+		\let\realitem\item                              % rebind \item for first usage in environment
+		\renewcommand{\item}[1]{\let\item\realitem ##1} % after first usage, reset it to normal
+}{                                                      %
+	\end{description}                                   %
+}
+
+%EdEntry - Formats a single "school"
+%
+% Arguments: {School Name}
+%			 {Starting Month + Year}
+%			 {Ending Month + Year}
+%
+% Uses \item for each line of description regarding the school.
+% 
+% NOTE: Due to tabularx, this doesn't seem like it can be nested in further \newenviornment commands
+%       Furthermore, enviornments can't span table cells so we have one table per entry
+
+\newenvironment{EdEntry}[3]                 %
+{                                           %
+	\newcommand{\DateLine}{#2 \\ to \\ #3}  % stores the date since args aren't present at end
+	\tabularx{\textwidth}[c]{E Y}           % fixed width date column
+		\begin{multicols}{2}                % 2 columns for education description
+			\begin{TitleDescription}{#1}    %
+}{                                          %
+			\end{TitleDescription}          %
+		\end{multicols}                     %
+		&                                   % swaps to the date column
+		\begin{center}\DateLine\end{center} %
+		\\                                  %
+	\endtabularx                            %
+}
+
+
+
+% ExpEntry - formats one experience/job
+%
+% Arguments: {Position Title}
+%			 {Starting Month + Year}
+%			 {Ending Month + Year}
+%
+% Uses \item for each line of description
+%
+% Very similar to EdEntry, minus the multicols
+\newenvironment{ExpEntry}[3]               %
+{                                          %
+	\newcommand{\DateLine}{#2 \\ to \\ #3} %
+	\tabularx{\textwidth}[c]{E Y}          %
+		\begin{TitleDescription}{#1}       %
+}{                                         %
+		\end{TitleDescription}             %
+	&                                      % swaps to the date column
+	\begin{center} \DateLine \end{center}  %
+	\\                                     %
+	\endtabularx                           %
+}
+
+
 
 %Header setup
 \pagestyle{fancy}
@@ -107,41 +186,20 @@
 %	[School], city		elem3			start year
 %		elem1			elem4			   --
 %		elem2			elem5			end year
-\section*{Education}
+%\section*{Education}
 
-textbefore
-
-\begin{DatedEntry}{Aug. 2019}{May 2023}
-	code again!
-\end{DatedEntry}
-
-textafter
-
-
-\begin{flushleft} %throws everything to the left to ensure table works properly
-	\begin{tabularx}{\textwidth}[c]{E Y} %sets up table with 2 columns (ed and year)
-
-		%UNIVERSITY OF ILLINOIS AT CHICAGO
-		\begin{multicols}{2}
-			\begin{description}
-				\item [University of Illinois at Chicago, Chicago, Il.] 
-					B.S. \& M.S. in Computer Science 
-				\item 4.0 grade point average
-				\item Honors College student
-				\item Member of the A.C.M.
-			\end{description}
-		\end{multicols}
-		%year
-		&
-		\begin{center}
-			Aug. 2019 \\ to \\ May 2023
-		\end{center}
-		\\
-	\end{tabularx}
-\end{flushleft}
+\begin{Education}
+	\begin{EdEntry}{University of Illinois at Chicago, Chicago, Il.}{Aug. 2019}{May 2023}
+		\item B.S. \& M.S. in Computer Science 
+		\item 4.0 grade point average
+		\item Honors College student
+		\item Member of the A.C.M.
+	\end{EdEntry}
+\end{Education}
 
 %---------------------------------------------------------------------------Coursework
 \section*{Relevant Coursework}
+
 \begin{flushleft}
 	\begin{tabularx}{\textwidth}[c]{X X}
 		\begin{description}
@@ -160,7 +218,6 @@ textafter
 %---------------------------------------------------------------------------Skills
 %For skills, we can use a much simpler format
 \section*{Skills}
-
 \begin{flushleft}
 	\begin{tabularx}{\textwidth}{X X}
 		%other skills
@@ -174,99 +231,62 @@ textafter
 		\end{description} &
 
 		%Programming languages
-		\begin{description}
-			\item [Programming Languages] 
-				Exploring Haskell and Coq
+		\begin{TitleDescription}{Programming Languages}
+			\item Exploring Haskell and Coq
 			\item Experienced with C \& C++
 			\item Proficient in Bash, Python \& \href{https://github.com/baricus/resume}{\LaTeX{}}
 			\item Familiar with JavaScript, Java, AHK, \& Rockstar
-		\end{description} 
+		\end{TitleDescription} 
 	\end{tabularx}
 \end{flushleft}
 
 %---------------------------------------------------------------------------Experience (work)
 %For this section, we return to the formatting of Education
-\section*{Experience}
+\begin{Experience}
 
-\begin{flushleft}
-	\begin{tabularx}{\textwidth}[c]{E Y}
 		% Telephony Studies CACI 2022
-		\begin{description}
-			\item [Telephone Studies Intern, CACI]
-				Explored the effectiveness of honeypots as a method of collecting information with a focus on SSH attacks
-			\item Analyzed binaries, network traffic, and other attacker activities to garner insights into individual attackers and trends
-			
-		\end{description}
-		&
-		\begin{center}
-			May. 2022 \\ to \\ Aug. 2022
-		\end{center}
-		\\
+	\begin{ExpEntry}{Telephone Studies Intern, CACI}{May 2022}{Aug. 2022}
+		\item Explored the effectiveness of honeypots as a method of collecting information with a focus on SSH attacks
+		\item Analyzed binaries, network traffic, and other attacker activities to garner insights into individual attackers and trends
+	\end{ExpEntry}
 
-		% Telephony Studies CACI 2021
-		\begin{description}
-			\item [Telephone Studies Intern, CACI]
-				Designed and developed a hypervisor-side anti-malware solution for guests utilizing virtual machine introspection
+	% Telephony Studies CACI 2021
+	\begin{ExpEntry}{Telephone Studies Intern, CACI}{May 2021}{Aug. 2021}
+			\item Designed and developed a hypervisor-side anti-malware solution for guests utilizing virtual machine introspection
 			\item Worked extensively with the Linux kernel to identify and test attack vectors
-		\end{description}
-		&
-		\begin{center}
-			May. 2021 \\ to \\ Aug. 2021 
-		\end{center}
-		\\
+	\end{ExpEntry}
 
-		%251 TA, UIC
-		\begin{description}
-			\item [CS 251 (Data Structures) Teaching Assistant, University of Illinois at Chicago]
-				Engaged with students during self-run office hours, lab sections and as an oral exam proctor
+	%251 TA, UIC
+	\begin{ExpEntry}{CS 251 (Data Structures) Teaching Assistant, University of Illinois at Chicago}
+		{Aug. 2020}{May 2021}
+			\item Engaged with students during self-run office hours, lab sections and as an oral exam proctor
 			\item Provided iterative feedback on project design and requirements
-		\end{description}
-		&
-		\begin{center}
-			Aug. 2020 \\ to \\ May 2021 
-		\end{center}
-		\\
+	\end{ExpEntry}
 
-		%MAKERSPACE, UIC
-		\begin{description}
-			\item [Intern, University of Illinois at Chicago MakerSpace]
-				Independently designed and manufactured a desk-mounted microphone boom arm using MakerSpace facilities
-			\item Designed and manufactured sneeze guards for use in UIC offices
-		    %\item Experimented with various additive and subtractive manufacturing techniques
-		\end{description}
-		&
-		\begin{center}
-			July 2020 \\ to \\ Aug. 2020
-		\end{center}
-		\\
+	%MAKERSPACE, UIC
+	\begin{ExpEntry}{Intern, University of Illinois at Chicago MakerSpace}
+		{July 2020}{Aug. 2020}
+		\item Independently designed and manufactured a desk-mounted microphone boom arm using MakerSpace facilities
+		\item Designed and manufactured sneeze guards for use in UIC offices
+		%\item Experimented with various additive and subtractive manufacturing techniques
+	\end{ExpEntry}
 
-		%NETWORK OPS, NCUSD
-		\begin{description}
-			\item [Network Operations Intern, Naperville Community Unit School District 203] 
-				Led a small team to conduct a suite of wireless surveys across the district
-			\item Condensed findings into building level reports highlighting problems and providing solutions
-			% \item Developed a Java application to analyze active survey data
-			% \item Worked closely with both hardware and software infrastructure
-		\end{description} 
-		& 
-		\begin{center}
-			June 2019 \\ to \\ Aug. 2019
-		\end{center}
-		\\
+	%NETWORK OPS, NCUSD
+	\begin{ExpEntry}{Network Operations Intern, Naperville Community Unit School District 203}
+		{June 2019}{Aug. 2019}
+		\item Led a small team to conduct a suite of wireless surveys across the district
+		\item Condensed findings into building level reports highlighting problems and providing solutions
+		% \item Developed a Java application to analyze active survey data
+		% \item Worked closely with both hardware and software infrastructure
+	\end{ExpEntry} 
 
-		%GOLF CADDIE NCC
-		\begin{description}
-			\item [Golf Caddie, Naperville Country Club] 
-				Carries patrons clubs for duration of the golf round
-			\item Engages directly with golfers to ensure an enjoyable and timely round
-		\end{description} 
-		&
-		\begin{center}
-			Apr. 2018 \\ to \\ Aug. 2020
-		\end{center} 
-		\\
-	\end{tabularx}
-\end{flushleft}
+	%GOLF CADDIE NCC
+	\begin{ExpEntry}{Golf Caddie, Naperville Country Club}
+		{Apr. 2018}{Aug. 2020}
+		\item Carries patrons clubs for duration of the golf round
+		\item Engages directly with golfers to ensure an enjoyable and timely round
+	\end{ExpEntry} 
+\end{Experience}
 
 %---------------------------------------------------------------------------Projects
 %Similar to ``Skills,'' we put this section in two columns: prior and current projects
@@ -275,24 +295,22 @@ textafter
 \begin{center}
 	\begin{tabularx}{\textwidth}{X X}
 		%Current projects
-		\begin{description}
-			\item [Current Projects] 
-				Developing \href{https://github.com/Baricus/HaskTTP}{HaskTTP}, a conditionally compliant HTTP/1.1 webserver written in Haskell from the socket level
+		\begin{TitleDescription}{Current Projects}
+			\item Developing \href{https://github.com/Baricus/HaskTTP}{HaskTTP}, a conditionally compliant HTTP/1.1 webserver written in Haskell from the socket level
 			\item Using Iris as a component of a VST specification for verifying C programs in Coq
-		\end{description}
+		\end{TitleDescription}
 
 		&
 		%Prior projects
-		\begin{description}
-			\item [Prior Projects] 
-				Writing a fully automated Twitch-specific IRC bot, \href{https://github.com/Baricus/BariBot}{BariBot}, in C++ from the socket level
+		\begin{TitleDescription}{Prior Projects}
+			\item Writing a fully automated Twitch-specific IRC bot, \href{https://github.com/Baricus/BariBot}{BariBot}, in C++ from the socket level
 			\item Explored elliptic curve arithmetic in Python over various fields
 			\item Creating generative art through Java applications via the Processing3 library
 
 			%\item Explored the arithmetic of elliptical curves through python-enabled computation, personally focused on creating classes representing points and the related abelian operations over various fields
 			%\item Assembling and experimenting with the Open Theremin V3 Arduino Shield
 			%\item Implemented a Spotify ``helper,'' managing volume, seek/skip, and liking/disliking songs through keyboard shortcuts via AutoHotKey
-		\end{description}	
+		\end{TitleDescription}	
 	\end{tabularx}
 \end{center}
 
