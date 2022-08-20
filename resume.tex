@@ -67,6 +67,24 @@
 % lowers seperation between list items
 \setlength\itemsep{3pt}
 
+% Custom enviornments
+\newenvironment{DatedEntry}[2]{%
+	\newcommand{\DateLine}{#1 \\ to \\ #2}%
+	\flushleft
+	\tabularx{\textwidth}[c]{E Y}%
+}{%
+	&%
+	\begin{center}%
+		\DateLine%
+	\end{center}%
+	\\%
+	\endtabularx%
+	}
+
+%\newenvironment{DatedEntry}[2]%
+	%{\begin{flushleft}\begin{tabularx}{\textwidth}[c]{E Y}}%
+	%{exit\end{tabularx}\end{flushleft}}
+
 %Header setup
 \pagestyle{fancy}
 \fancyhf{}
@@ -90,6 +108,15 @@
 %		elem1			elem4			   --
 %		elem2			elem5			end year
 \section*{Education}
+
+textbefore
+
+\begin{DatedEntry}{Aug. 2019}{May 2023}
+	code again!
+\end{DatedEntry}
+
+textafter
+
 
 \begin{flushleft} %throws everything to the left to ensure table works properly
 	\begin{tabularx}{\textwidth}[c]{E Y} %sets up table with 2 columns (ed and year)
