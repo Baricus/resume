@@ -67,20 +67,9 @@
 % lowers seperation between list items
 \setlength\itemsep{3pt}
 
-% Custom environments
-%\newenvironment{DatedEntry}[2]{%
-	%\newcommand{\DateLine}{#1 \\ to \\ #2}%
-	%\flushleft%
-	%\tabularx{\textwidth}[c]{E Y}%
-%}{%
-	%&% swaps to the date column
-	%{\center\DateLine}%
-	%\\%
-	%\endtabularx%
-	%\endflushleft
-%}
-
+% ---------------------------------------------------------------------------Custom environments
 % simple environments for the start/end of various sections
+% These is largely just a section header and a flush left for formatting
 \newenvironment{Education} %
 {                          %
 	\section*{Education}   %
@@ -95,6 +84,54 @@
 	\flushleft              %
 }{                          %
 	\endflushleft           %
+}
+
+% Activites are formatted into a multicolumn setup without anything fancy
+
+\newenvironment{Activities}          %
+{                                    %
+	\section*{Additional Activities} %
+	\begin{center}                   %
+		\begin{multicols}{2}         %
+			\begin{description}      %
+}{                                   %
+			\end{description}        %
+		\end{multicols}              %
+	\end{center}                     %
+}
+
+% The following three environments use tabularx to fix things into a two column format
+% which is fully controllable
+% Thus, to swap between the columns, the & is used as if it was a normal tabularx environment
+
+\newenvironment{Coursework}        %
+{                                  %
+	\section*{Relevant Coursework} %
+	\flushleft                     %
+	\tabularx{\textwidth}[c]{X X}  %
+}{                                 %
+	\endtabularx                   %
+	\endflushleft                  %
+}
+
+\newenvironment{Projects}         %
+{                                 %
+	\section*{Projects}           %
+	\flushleft                    %
+	\tabularx{\textwidth}[c]{X X} %
+}{                                %
+	\endtabularx                  %
+	\endflushleft                 %
+}
+
+\newenvironment{Skills}           %
+{                                 %
+	\section*{Skills}             %
+	\flushleft                    %
+	\tabularx{\textwidth}[c]{X X} %
+}{                                %
+	\endtabularx                  %
+	\endflushleft                 %
 }
 
 % TitleDescription - a "single title" description
@@ -120,8 +157,8 @@
 %
 % Uses \item for each line of description regarding the school.
 % 
-% NOTE: Due to tabularx, this doesn't seem like it can be nested in further \newenviornment commands
-%       Furthermore, enviornments can't span table cells so we have one table per entry
+% NOTE: Due to tabularx, this doesn't seem like it can be nested in further \newenvironment commands
+%       Furthermore, environments can't span table cells so we have one table per entry
 
 \newenvironment{EdEntry}[3]                 %
 {                                           %
@@ -137,8 +174,6 @@
 		\\                                  %
 	\endtabularx                            %
 }
-
-
 
 % ExpEntry - formats one experience/job
 %
@@ -181,13 +216,8 @@
 
 %---------------------------------------------------------------------------DOCUMENT
 \begin{document}
-%---------------------------------------------------------------------------Education
-%Formatted:
-%	[School], city		elem3			start year
-%		elem1			elem4			   --
-%		elem2			elem5			end year
-%\section*{Education}
 
+%---------------------------------------------------------------------------Education
 \begin{Education}
 	\begin{EdEntry}{University of Illinois at Chicago, Chicago, Il.}{Aug. 2019}{May 2023}
 		\item B.S. \& M.S. in Computer Science 
@@ -198,10 +228,7 @@
 \end{Education}
 
 %---------------------------------------------------------------------------Coursework
-\section*{Relevant Coursework}
-
-\begin{flushleft}
-	\begin{tabularx}{\textwidth}[c]{X X}
+\begin{Coursework}
 		\begin{description}
 			\item Data Structures (CS 251)
 			\item Software Design (CS 342)
@@ -212,39 +239,33 @@
 			\item Differential Equations (MATH 220)
 			\item Linear Algebra (MATH 320)
 		\end{description}
-	\end{tabularx}
-\end{flushleft}
+\end{Coursework}
 
 %---------------------------------------------------------------------------Skills
-%For skills, we can use a much simpler format
-\section*{Skills}
-\begin{flushleft}
-	\begin{tabularx}{\textwidth}{X X}
-		%other skills
-		\begin{description}
-			\item Various Linux command line utilities
-			\item Wireless networking analysis
-			\item Regular expressions
-			\item GNUMake, Valgrind, and GDB
-			\item Computer maintenance and repair	
-			%\item CAD software
-		\end{description} &
+\begin{Skills}
+	%other skills
+	\begin{description}
+		\item Various Linux command line utilities
+		\item Wireless networking analysis
+		\item Regular expressions
+		\item GNUMake, Valgrind, and GDB
+		\item Computer maintenance and repair	
+		%\item CAD software
+	\end{description} &
 
-		%Programming languages
-		\begin{TitleDescription}{Programming Languages}
-			\item Exploring Haskell and Coq
-			\item Experienced with C \& C++
-			\item Proficient in Bash, Python \& \href{https://github.com/baricus/resume}{\LaTeX{}}
-			\item Familiar with JavaScript, Java, AHK, \& Rockstar
-		\end{TitleDescription} 
-	\end{tabularx}
-\end{flushleft}
+	%Programming languages
+	\begin{TitleDescription}{Programming Languages}
+		\item Exploring Haskell and Coq
+		\item Experienced with C \& C++
+		\item Proficient in Bash, Python \& \href{https://github.com/baricus/resume}{\LaTeX{}}
+		\item Familiar with JavaScript, Java, AHK, \& Rockstar
+	\end{TitleDescription} 
+\end{Skills}
 
 %---------------------------------------------------------------------------Experience (work)
 %For this section, we return to the formatting of Education
 \begin{Experience}
-
-		% Telephony Studies CACI 2022
+	% Telephony Studies CACI 2022
 	\begin{ExpEntry}{Telephone Studies Intern, CACI}{May 2022}{Aug. 2022}
 		\item Explored the effectiveness of honeypots as a method of collecting information with a focus on SSH attacks
 		\item Analyzed binaries, network traffic, and other attacker activities to garner insights into individual attackers and trends
@@ -290,42 +311,31 @@
 
 %---------------------------------------------------------------------------Projects
 %Similar to ``Skills,'' we put this section in two columns: prior and current projects
-\section*{Projects}
+\begin{Projects}
+	%Current projects
+	\begin{TitleDescription}{Current Projects}
+		\item Developing \href{https://github.com/Baricus/HaskTTP}{HaskTTP}, a conditionally compliant HTTP/1.1 webserver written in Haskell from the socket level
+		\item Using Iris as a component of a VST specification for verifying C programs in Coq
+	\end{TitleDescription}
 
-\begin{center}
-	\begin{tabularx}{\textwidth}{X X}
-		%Current projects
-		\begin{TitleDescription}{Current Projects}
-			\item Developing \href{https://github.com/Baricus/HaskTTP}{HaskTTP}, a conditionally compliant HTTP/1.1 webserver written in Haskell from the socket level
-			\item Using Iris as a component of a VST specification for verifying C programs in Coq
-		\end{TitleDescription}
+	&
+	%Prior projects
+	\begin{TitleDescription}{Prior Projects}
+		\item Writing a fully automated Twitch-specific IRC bot, \href{https://github.com/Baricus/BariBot}{BariBot}, in C++ from the socket level
+		\item Explored elliptic curve arithmetic in Python over various fields
+		\item Creating generative art through Java applications via the Processing3 library
 
-		&
-		%Prior projects
-		\begin{TitleDescription}{Prior Projects}
-			\item Writing a fully automated Twitch-specific IRC bot, \href{https://github.com/Baricus/BariBot}{BariBot}, in C++ from the socket level
-			\item Explored elliptic curve arithmetic in Python over various fields
-			\item Creating generative art through Java applications via the Processing3 library
-
-			%\item Explored the arithmetic of elliptical curves through python-enabled computation, personally focused on creating classes representing points and the related abelian operations over various fields
-			%\item Assembling and experimenting with the Open Theremin V3 Arduino Shield
-			%\item Implemented a Spotify ``helper,'' managing volume, seek/skip, and liking/disliking songs through keyboard shortcuts via AutoHotKey
-		\end{TitleDescription}	
-	\end{tabularx}
-\end{center}
+		%\item Explored the arithmetic of elliptical curves through python-enabled computation, personally focused on creating classes representing points and the related abelian operations over various fields
+		%\item Assembling and experimenting with the Open Theremin V3 Arduino Shield
+		%\item Implemented a Spotify ``helper,'' managing volume, seek/skip, and liking/disliking songs through keyboard shortcuts via AutoHotKey
+	\end{TitleDescription}	
+\end{Projects}
 
 %---------------------------------------------------------------------------Additional Activities
 %For additional activities, each gets one ``bullet point''
-\section*{Additional Activities}
-
-\begin{center}
-	\begin{multicols}{2}
-		\begin{description}
+\begin{Activities}
 			\item Searching for the perfect macaroni and cheese recipe
 			\item Amateur pianist
 			\item Amateur poet looking to eventually publish
-		\end{description}
-	\end{multicols}
-\end{center}
-
+\end{Activities}
 \end{document}
