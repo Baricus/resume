@@ -11,13 +11,12 @@
 %	
 %	To Do:
 %		- Redo Relevant coursework
-%		- Add vector work:
-%			-bullets for education, skills, etc?
-%		- Convert to environments
 %
 %	Considerations:
 %		- Should relevant coursework be revamped to entirely technical electives?
 %		- Github Actions based releases rather than included PDF?
+%		- Add vector work:
+%			-bullets for education, skills, etc?
 
 
 %------------------------------------------------------------------------------PACKAGES/SETUP
@@ -139,6 +138,7 @@
 % rebinding \item to work transparently with this as if there was genuinely a title
 %
 % Arguments: {Description Title}
+
 \newenvironment{TitleDescription}[1]                    %
 {                                                       %
 	\begin{description}                                 %
@@ -197,8 +197,6 @@
 	\endtabularx                           %
 }
 
-
-
 %Header setup
 \pagestyle{fancy}
 \fancyhf{}
@@ -251,7 +249,9 @@
 		\item GNUMake, Valgrind, and GDB
 		\item Computer maintenance and repair	
 		%\item CAD software
-	\end{description} &
+	\end{description} 
+
+	&
 
 	%Programming languages
 	\begin{TitleDescription}{Programming Languages}
@@ -263,7 +263,6 @@
 \end{Skills}
 
 %---------------------------------------------------------------------------Experience (work)
-%For this section, we return to the formatting of Education
 \begin{Experience}
 	% Telephony Studies CACI 2022
 	\begin{ExpEntry}{Telephone Studies Intern, CACI}{May 2022}{Aug. 2022}
