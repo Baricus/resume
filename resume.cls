@@ -99,11 +99,11 @@
 \newcommand{\GivenLoc}{Location}
 \newcommand{\GivenPhone}{Phone \#}
 \newcommand{\GivenEmail}{Email@Address}
-\newcommand{\Author}[1]{\renewcommand{\GivenAuthor{#1}}}
-\newcommand{\Subtitle}[1]{\renewcommand{\GivenSubtitle{#1}}}
-\newcommand{\Loc}[1]{\renewcommand{\GivenLoc{#1}}}
-\newcommand{\Phone}[1]{\renewcommand{\GivenPhone{#1}}}
-\newcommand{\Email}[1]{\renewcommand{\GivenEmail{#1}}}
+\newcommand{\Author}[1]{\renewcommand{\GivenAuthor}{#1}}
+\newcommand{\Subtitle}[1]{\renewcommand{\GivenSubtitle}{#1}}
+\newcommand{\Loc}[1]{\renewcommand{\GivenLoc}{#1}}
+\newcommand{\Phone}[1]{\renewcommand{\GivenPhone}{#1}}
+\newcommand{\Email}[1]{\renewcommand{\GivenEmail}{#1}}
 
 %Header defining
 \pagestyle{fancy}
