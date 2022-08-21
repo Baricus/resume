@@ -30,7 +30,6 @@
 % Please refer to the comments at their definitions below for further details
 
 % --------------------------------------------------------------------Preamble
-% Intro class preamble
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{resume}[Baricus' resume formatting class]
 
