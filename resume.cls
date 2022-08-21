@@ -74,7 +74,7 @@
 \newcolumntype{Y}{>{\hsize=.11\hsize}X}           % Year columns (fixed size, center aligned)
 
 % tabularX removing spacing
-\renewcommand\tabularxcolumn[1]{p{#1}}
+\renewcommand{\tabularxcolumn}[1]{p{#1}}
 \renewcommand*{\arraystretch}{0}
 
 %sets up descriptions to be dense and off the next line
